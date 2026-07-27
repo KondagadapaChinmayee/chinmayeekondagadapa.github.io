@@ -558,6 +558,7 @@
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-grid"></div>
+  <div class="tech-cloud" id="techCloud" aria-hidden="false"></div>
   <div class="hero-content">
     <span class="hero-tag">Data Analyst · Analytics Engineer</span>
     <h1>Chinmayee<br><em>Kondagadapa</em></h1>
@@ -844,6 +845,85 @@
     });
   }, { threshold: 0.1 });
   reveals.forEach(el => observer.observe(el));
+
+  // Tech cloud: animated interactive tags that filter projects
+  const techTags = [
+    'Python','SQL','Power BI','DAX','Tableau','dbt','Snowflake','Azure','Azure OpenAI','LangChain',
+    'PySpark','scikit-learn','TensorFlow','PyTorch','Azure ML','MLflow','Streamlit','Flask','Docker','Git',
+    'Airflow','BigQuery','Redshift','Looker','Power Query','Excel','R','ggplot','Spark','Snowpark'
+  ];
+
+  const techCloud = document.getElementById('techCloud');
+  const projectCards = Array.from(document.querySelectorAll('.project-card'));
+  let activeFilter = null;
+
+  function placeTechTags() {
+    if (!techCloud) return;
+    techCloud.innerHTML = '';
+    const rect = techCloud.getBoundingClientRect();
+    const w = rect.width || window.innerWidth;
+    const h = rect.height || window.innerHeight * 0.5;
+    techTags.forEach((t, i) => {
+      const el = document.createElement('span');
+      el.className = 'tech-tag';
+      el.textContent = t;
+      // random position within hero area
+      const left = Math.random() * 80 + 5; // percent
+      const top = Math.random() * 65 + 12; // percent
+      el.style.left = left + '%';
+      el.style.top = top + '%';
+      // slightly stagger animation
+      el.style.animationDelay = (Math.random() * 4).toFixed(2) + 's';
+      el.style.animationDuration = (5 + Math.random() * 6).toFixed(2) + 's';
+      // click to filter projects
+      el.addEventListener('click', (ev) => {
+        ev.stopPropagation();
+        const tag = t.toLowerCase();
+        if (activeFilter === tag) {
+          clearProjectFilter();
+        } else {
+          applyProjectFilter(tag);
+          // update active state
+          document.querySelectorAll('.tech-tag').forEach(x => x.classList.toggle('active', x === el));
+        }
+      });
+      techCloud.appendChild(el);
+    });
+  }
+
+  function applyProjectFilter(tag) {
+    activeFilter = tag;
+    projectCards.forEach(card => {
+      const tagsEl = card.querySelector('.skill-tags');
+      const content = tagsEl ? tagsEl.textContent.toLowerCase() : card.textContent.toLowerCase();
+      if (content.includes(tag)) {
+        card.style.display = '';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+
+  function clearProjectFilter() {
+    activeFilter = null;
+    document.querySelectorAll('.tech-tag').forEach(x => x.classList.remove('active'));
+    projectCards.forEach(card => card.style.display = '');
+  }
+
+  // reposition tags on resize for variety
+  window.addEventListener('resize', () => {
+    // debounce
+    clearTimeout(window._techCloudResize);
+    window._techCloudResize = setTimeout(placeTechTags, 250);
+  });
+
+  // initialize after a short delay to allow layout
+  setTimeout(placeTechTags, 300);
+
+  // click anywhere to clear filter
+  document.addEventListener('click', (ev) => {
+    if (!ev.target.classList.contains('tech-tag')) clearProjectFilter();
+  });
 </script>
 
 </body>
