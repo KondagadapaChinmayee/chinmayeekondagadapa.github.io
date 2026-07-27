@@ -95,14 +95,30 @@ strong,b{font-weight:300;color:var(--text)}
 .tech-cloud{position:absolute;inset:0;z-index:2;pointer-events:none;overflow:visible}
 .tech-cloud .tech-tag{position:absolute;display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(139,94,60,0.10);color:var(--brown-900);font-size:0.82rem;backdrop-filter:blur(2px);border:1px solid rgba(139,94,60,0.06);cursor:pointer;pointer-events:auto;transition:transform .28s cubic-bezier(.2,.9,.3,1),box-shadow .2s,opacity .2s;white-space:nowrap}
 .tech-cloud .tech-tag:hover{transform:translateY(-6px) scale(1.06);box-shadow:0 10px 24px rgba(11,7,5,0.06);opacity:1}
-@keyframes floaty{0%{transform:translateY(0) translateX(0)}50%{transform:translateY(-8px) translateX(4px)}100%{transform:translateY(0) translateX(0)}}
-.tech-cloud .tech-tag{animation:floaty 6s ease-in-out infinite;opacity:.92}
+@keyframes floaty{0%{transform:translateY(0) translateX(0)}50%{transform:translateY(-6px) translateX(3px)}100%{transform:translateY(0) translateX(0)}}
+.tech-cloud .tech-tag{animation:floaty 8s cubic-bezier(.2,.7,.25,1) infinite;opacity:.92}
 
 /* Active tech filter style */
 .tech-tag.active{background:var(--brown-600);color:var(--white);border-color:rgba(0,0,0,0.06);box-shadow:0 12px 30px rgba(139,94,60,0.12);}
 
 /* Ensure hero-content stays above cloud */
-.hero-content{position:relative;z-index:3}
+.hero-content{position:relative;z-index:4}
 
-/* Responsive tweaks: fewer tags on small screens */
-@media (max-width:640px){.tech-cloud .tech-tag{display:none}}
+/* Background layered data visuals (charts, grid, nodes) */
+.bg-layer-chart{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:0.12}
+.bg-layer-chart svg{width:100%;height:100%;display:block}
+
+/* Sparklines on project cards */
+.project-spark{width:120px;height:28px;display:inline-block;vertical-align:middle}
+.project-card .project-spark svg{width:100%;height:100%}
+
+/* Cleaner, minimal animations */
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .6s cubic-bezier(.2,.9,.3,1),transform .6s cubic-bezier(.2,.9,.3,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.card:hover{transform:translateY(-6px) scale(1.01);box-shadow:0 18px 40px rgba(11,7,5,0.06)}
+
+/* Subtle motif in header (Indian-inspired) */
+.header-motif{position:absolute;left:18px;top:8px;width:36px;height:36px;opacity:0.08;z-index:5;pointer-events:none}
+
+/* Responsive tweaks: fewer tags and simplified layers on small screens */
+@media (max-width:640px){.tech-cloud .tech-tag{display:none}.bg-layer-chart{display:none}.project-spark{display:none}}
