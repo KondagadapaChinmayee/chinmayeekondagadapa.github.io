@@ -1,0 +1,29 @@
+[
+  {
+    "id": "sample-course-1",
+    "name": "Sample Course — Replace Me",
+    "provider": "Coursera",
+    "status": "completed",
+    "date": "2026-05",
+    "link": "",
+    "notes": "One line on what you learned or built."
+  },
+  {
+    "id": "sample-course-2",
+    "name": "Course In Progress",
+    "provider": "Udemy",
+    "status": "in-progress",
+    "date": "2026-07",
+    "link": "",
+    "notes": ""
+  },
+  {
+    "id": "sample-course-3",
+    "name": "Course You're Planning",
+    "provider": "edX",
+    "status": "planned",
+    "date": "",
+    "link": "",
+    "notes": ""
+  }
+]

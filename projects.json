@@ -1,0 +1,22 @@
+[
+  {
+    "id": "sample-project-1",
+    "title": "Sample Project — Replace Me",
+    "description": "One or two sentences describing what the project does and the problem it solves.",
+    "tags": ["Python", "API"],
+    "repo": "https://github.com/yourname/sample-project",
+    "demo": "",
+    "date": "2026-06",
+    "status": "completed"
+  },
+  {
+    "id": "sample-project-2",
+    "title": "Another Project In Progress",
+    "description": "Short description. Status shows as 'in-progress' so it appears with a badge on the site.",
+    "tags": ["JavaScript", "React"],
+    "repo": "https://github.com/yourname/another-project",
+    "demo": "",
+    "date": "2026-07",
+    "status": "in-progress"
+  }
+]

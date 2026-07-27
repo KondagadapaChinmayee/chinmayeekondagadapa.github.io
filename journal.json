@@ -1,0 +1,9 @@
+[
+  {
+    "id": "sample-entry-1",
+    "date": "2026-07-27",
+    "title": "Started the portfolio",
+    "content": "Set up the interactive portfolio site and connected it to GitHub Pages. Next: fill in real projects and start logging weekly progress here.",
+    "tags": ["meta"]
+  }
+]
