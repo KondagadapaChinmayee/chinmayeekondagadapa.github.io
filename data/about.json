@@ -1,0 +1,19 @@
+{
+  "name": "Naga Shiva Chinmayee Kondagadapa",
+  "title": "Senior Data Analyst Contractor | AML & Financial Crime Analytics",
+  "location": "Chicago, Illinois, United States",
+  "contact": {
+    "phone": "+1 312-451-0658",
+    "email": "nkondagadapa@gmail.com",
+    "github": "https://github.com/ChinmayeeKondagadapa",
+    "linkedin": "https://www.linkedin.com/in/chinmayeekondagadapa-bianalyst"
+  },
+  "summary": "I turn raw enterprise data into revenue decisions. I build analytics ecosystems that scale — from Power BI dashboards serving hundreds of users to RAG-powered AI assistants.",
+  "skills": ["Power BI","DAX","SQL","Python","Snowflake","dbt","Azure","PySpark","Azure OpenAI"],
+  "languages": ["English (Full Professional)"],
+  "certifications": ["Microsoft Certified: Power BI Data Analyst Associate (PL-300)"],
+  "education": [
+    {"degree":"MS Computer Science","school":"Florida Atlantic University","dates":"2022 - 2024"},
+    {"degree":"B.Tech Computer Science Engineering","school":"GITAM University","dates":"2014 - 2018"}
+  ]
+}

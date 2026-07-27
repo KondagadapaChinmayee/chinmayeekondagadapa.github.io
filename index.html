@@ -7,15 +7,15 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #0a0a0f;
-    --bg2: #111118;
-    --surface: #16161f;
-    --border: #1e1e2e;
-    --accent: #c8a96e;
-    --accent2: #e8c98e;
-    --text: #e8e8f0;
-    --muted: #7070a0;
-    --white: #f5f5ff;
+    --bg: #ffffff;
+    --bg2: #fffaf6;
+    --surface: #fff7f1;
+    --border: rgba(139,94,60,0.08);
+    --accent: #8b5e3c;
+    --accent2: #d8b4a6;
+    --text: #2b1f18;
+    --muted: #6b4f3b;
+    --white: #ffffff;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -72,10 +72,10 @@
   .nav-links a {
     color: var(--muted);
     text-decoration: none;
-    font-size: 0.85rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    transition: color 0.3s;
+    font-size: 0.95rem;
+    letter-spacing: 0.02em;
+    text-transform: none;
+    transition: color 0.2s;
   }
 
   .nav-links a:hover { color: var(--accent); }
@@ -94,16 +94,16 @@
     position: absolute;
     inset: 0;
     background: 
-      radial-gradient(ellipse 60% 50% at 80% 50%, rgba(200,169,110,0.06) 0%, transparent 70%),
-      radial-gradient(ellipse 40% 40% at 20% 80%, rgba(100,80,160,0.08) 0%, transparent 60%);
+      radial-gradient(ellipse 60% 50% at 80% 50%, rgba(139,94,60,0.06) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 40% at 20% 80%, rgba(216,180,166,0.06) 0%, transparent 60%);
   }
 
   .hero-grid {
     position: absolute;
     inset: 0;
     background-image: 
-      linear-gradient(rgba(200,169,110,0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(200,169,110,0.03) 1px, transparent 1px);
+      linear-gradient(rgba(139,94,60,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(139,94,60,0.03) 1px, transparent 1px);
     background-size: 60px 60px;
     mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
   }
@@ -116,13 +116,14 @@
 
   .hero-tag {
     display: inline-block;
-    font-size: 0.75rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.03em;
+    text-transform: none;
     color: var(--accent);
-    border: 1px solid rgba(200,169,110,0.3);
-    padding: 0.4rem 1rem;
+    border: 1px solid rgba(139,94,60,0.14);
+    padding: 0.45rem 1rem;
     margin-bottom: 2rem;
+    border-radius: 999px;
     animation: fadeUp 0.8s ease forwards;
     opacity: 0;
   }
@@ -131,7 +132,7 @@
     font-family: 'DM Serif Display', serif;
     font-size: clamp(3rem, 7vw, 6rem);
     line-height: 1.05;
-    color: var(--white);
+    color: var(--text);
     animation: fadeUp 0.8s 0.2s ease forwards;
     opacity: 0;
   }
@@ -162,13 +163,14 @@
   .btn-primary {
     padding: 0.9rem 2rem;
     background: var(--accent);
-    color: #0a0a0f;
+    color: #ffffff;
     text-decoration: none;
     font-size: 0.85rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    transition: all 0.3s;
+    font-weight: 300;
+    letter-spacing: 0.02em;
+    text-transform: none;
+    border-radius: 12px;
+    transition: all 0.22s;
   }
 
   .btn-primary:hover {
@@ -178,13 +180,14 @@
 
   .btn-ghost {
     padding: 0.9rem 2rem;
-    border: 1px solid rgba(200,169,110,0.4);
+    border: 1px solid rgba(139,94,60,0.14);
     color: var(--accent);
     text-decoration: none;
-    font-size: 0.85rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    transition: all 0.3s;
+    font-size: 0.92rem;
+    letter-spacing: 0.02em;
+    text-transform: none;
+    font-weight: 300;
+    transition: all 0.22s;
   }
 
   .btn-ghost:hover {
@@ -230,7 +233,7 @@
   .section-title {
     font-family: 'DM Serif Display', serif;
     font-size: clamp(2rem, 4vw, 3rem);
-    color: var(--white);
+    color: var(--text);
     margin-bottom: 3rem;
     line-height: 1.2;
   }
@@ -276,7 +279,7 @@
   .skill-card h3 {
     font-family: 'DM Serif Display', serif;
     font-size: 1.1rem;
-    color: var(--white);
+    color: var(--text);
     margin-bottom: 0.8rem;
   }
 
@@ -330,8 +333,8 @@
 
   .exp-role {
     font-size: 1rem;
-    font-weight: 500;
-    color: var(--white);
+    font-weight: 300;
+    color: var(--text);
     margin-bottom: 0.8rem;
   }
 
@@ -395,7 +398,7 @@
   .project-card h3 {
     font-family: 'DM Serif Display', serif;
     font-size: 1.15rem;
-    color: var(--white);
+    color: var(--text);
     margin-bottom: 0.8rem;
   }
 
@@ -409,7 +412,7 @@
     margin-top: 1.2rem;
     font-size: 0.82rem;
     color: var(--accent);
-    font-weight: 500;
+    font-weight: 300;
   }
 
   /* CONTACT */
@@ -526,7 +529,7 @@
   <div class="hero-bg"></div>
   <div class="hero-grid"></div>
   <div class="hero-content">
-    <span class="hero-tag">Available for C2C Contract · Remote USA</span>
+    <span class="hero-tag">Data Analyst · Analytics Engineer</span>
     <h1>Chinmayee<br><em>Kondagadapa</em></h1>
     <p class="hero-sub">Senior BI Analyst & Analytics Engineer with 8+ years turning complex data into decisions — from pipeline to dashboard.</p>
     <div class="hero-ctas">
@@ -711,6 +714,10 @@
       <div class="skill-tags" style="margin-top:1rem">
         <span class="tag">Azure OpenAI</span><span class="tag">LangChain</span><span class="tag">Snowflake</span>
       </div>
+      <div class="project-links" style="margin-top:12px;display:flex;gap:10px;align-items:center">
+        <a class="btn-ghost" href="#" aria-disabled="true" style="padding:8px 12px;border-radius:10px;background:transparent;border:1px solid var(--border);color:var(--muted);text-decoration:none">Live demo (add URL)</a>
+        <a class="btn-primary" href="https://github.com/ChinmayeeKondagadapa" target="_blank" style="padding:8px 12px;border-radius:10px;text-decoration:none">Repo</a>
+      </div>
     </div>
     <div class="project-card reveal">
       <div class="project-num">02</div>
@@ -719,6 +726,10 @@
       <div class="project-impact">2 hrs → 15 min deployment time</div>
       <div class="skill-tags" style="margin-top:1rem">
         <span class="tag">dbt Cloud</span><span class="tag">Azure DevOps</span><span class="tag">Snowflake</span>
+      </div>
+      <div class="project-links" style="margin-top:12px;display:flex;gap:10px;align-items:center">
+        <a class="btn-ghost" href="#" aria-disabled="true" style="padding:8px 12px;border-radius:10px;background:transparent;border:1px solid var(--border);color:var(--muted);text-decoration:none">Live demo (add URL)</a>
+        <a class="btn-primary" href="https://github.com/ChinmayeeKondagadapa" target="_blank" style="padding:8px 12px;border-radius:10px;text-decoration:none">Repo</a>
       </div>
     </div>
     <div class="project-card reveal">
@@ -729,6 +740,10 @@
       <div class="skill-tags" style="margin-top:1rem">
         <span class="tag">PySpark</span><span class="tag">Azure ML</span><span class="tag">scikit-learn</span>
       </div>
+      <div class="project-links" style="margin-top:12px;display:flex;gap:10px;align-items:center">
+        <a class="btn-ghost" href="#" aria-disabled="true" style="padding:8px 12px;border-radius:10px;background:transparent;border:1px solid var(--border);color:var(--muted);text-decoration:none">Live demo (add URL)</a>
+        <a class="btn-primary" href="https://github.com/ChinmayeeKondagadapa" target="_blank" style="padding:8px 12px;border-radius:10px;text-decoration:none">Repo</a>
+      </div>
     </div>
     <div class="project-card reveal">
       <div class="project-num">04</div>
@@ -737,6 +752,10 @@
       <div class="project-impact">300+ daily active users</div>
       <div class="skill-tags" style="margin-top:1rem">
         <span class="tag">Power BI</span><span class="tag">dbt</span><span class="tag">ADF</span><span class="tag">Snowflake</span>
+      </div>
+      <div class="project-links" style="margin-top:12px;display:flex;gap:10px;align-items:center">
+        <a class="btn-ghost" href="#" aria-disabled="true" style="padding:8px 12px;border-radius:10px;background:transparent;border:1px solid var(--border);color:var(--muted);text-decoration:none">Live demo (add URL)</a>
+        <a class="btn-primary" href="https://github.com/ChinmayeeKondagadapa" target="_blank" style="padding:8px 12px;border-radius:10px;text-decoration:none">Repo</a>
       </div>
     </div>
   </div>
@@ -747,9 +766,12 @@
   <div class="contact-inner">
     <div class="reveal">
       <p class="section-label">Let's Connect</p>
-      <h2 class="section-title">Open to C2C<br>Contract Roles</h2>
+      <h2 class="section-title">Get in touch</h2>
       <div class="divider"></div>
-      <p style="color:var(--muted);font-size:0.95rem">Available for remote U.S. contract roles in BI, Analytics Engineering, and Data platforms. H-1B transfer friendly.</p>
+      <p style="color:var(--muted);font-size:0.95rem">
+        Email: <a href="mailto:nkondagadapa@gmail.com">nkondagadapa@gmail.com</a> • Phone: +1 312-451-0658<br>
+        LinkedIn: <a href="https://www.linkedin.com/in/chinmayeekondagadapa-bianalyst/" target="_blank">chinmayeekondagadapa-bianalyst</a> • GitHub: <a href="https://github.com/ChinmayeeKondagadapa" target="_blank">ChinmayeeKondagadapa</a>
+      </p>
     </div>
     <div class="contact-links reveal">
       <a href="mailto:chinmayeekondagadapa@gmail.com" class="contact-link">
