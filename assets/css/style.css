@@ -46,19 +46,19 @@ h3 { color: var(--brown-h3); }
 html, body, *, *::before, *::after {
   font-weight: 300 !important;
   font-style: italic !important;
-  font-family: 'DM Sans', Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial !important;
+  font-family: 'Caveat', 'Great Vibes', cursive;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   font-synthesis: none !important;
 }
 
 /* Make sure headings also use light weight, italic, and the same font */
-h1,h2,h3,h4,h5,h6 { font-family: 'DM Sans', Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial !important; font-weight:300 !important; font-style: italic !important }
+h1,h2,h3,h4,h5,h6 { font-family: 'Caveat', 'Great Vibes', cursive; font-weight:300 !important; font-style: italic !important }
 
 *{box-sizing:border-box}
 * { transition: color .18s ease, background-color .18s ease, box-shadow .18s ease, transform .12s ease; }
 html,body{height:100%}
-body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial; background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;line-height:1.5}
+body{margin:0;font-family: 'Caveat', 'Great Vibes', cursive; background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;line-height:1.5}
 .container{max-width:980px;margin:0 auto;padding:24px}
 .header-row{display:flex;align-items:center;justify-content:space-between}
 .site-title{font-weight:300;margin:0}
