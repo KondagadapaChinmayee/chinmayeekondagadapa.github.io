@@ -1,22 +1,35 @@
 [
   {
-    "id": "sample-project-1",
-    "title": "Sample Project — Replace Me",
-    "description": "One or two sentences describing what the project does and the problem it solves.",
-    "tags": ["Python", "API"],
-    "repo": "https://github.com/yourname/sample-project",
+    "id": "powerbi-transaction-monitoring",
+    "title": "Power BI — Transaction monitoring dashboard",
+    "description": "End-to-end monitoring solution built in Power BI to surface transaction anomalies, SLA breaches, and operational KPIs used by compliance teams.",
+    "tags": ["Power BI","DAX","SQL","Azure","Anomaly Detection"],
+    "repo": "https://github.com/ChinmayeeKondagadapa/powerbi-transaction-monitoring",
     "demo": "",
     "date": "2026-06",
-    "status": "completed"
+    "status": "completed",
+    "featured": true
   },
   {
-    "id": "sample-project-2",
-    "title": "Another Project In Progress",
-    "description": "Short description. Status shows as 'in-progress' so it appears with a badge on the site.",
-    "tags": ["JavaScript", "React"],
-    "repo": "https://github.com/yourname/another-project",
+    "id": "seo-marketing-analytics",
+    "title": "SEO & Marketing analytics (SQL + Python)",
+    "description": "Channel-level attribution and content audit combining SQL pipelines and Python analysis; recommended content strategy improved organic sessions in a pilot.",
+    "tags": ["SQL","Python","SEO","Attribution","Analytics"],
+    "repo": "https://github.com/ChinmayeeKondagadapa/seo-marketing-analytics",
     "demo": "",
-    "date": "2026-07",
-    "status": "in-progress"
+    "date": "2026-05",
+    "status": "completed",
+    "featured": true
+  },
+  {
+    "id": "sales-forecasting",
+    "title": "Sales forecasting — time series",
+    "description": "Short-term sales forecasting using ETS and gradient-boosted models, compared methods, and deployed a simple dashboard for planners.",
+    "tags": ["Python","Prophet","XGBoost","Forecasting","Time series"],
+    "repo": "https://github.com/ChinmayeeKondagadapa/sales-forecasting",
+    "demo": "",
+    "date": "2025-11",
+    "status": "completed",
+    "featured": true
   }
 ]
