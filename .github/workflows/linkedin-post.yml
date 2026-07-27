@@ -1,0 +1,28 @@
+name: Post LinkedIn update on portfolio change
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "data/projects.json"
+      - "data/courses.json"
+      - "data/work.json"
+      - "data/journal.json"
+
+jobs:
+  linkedin-post:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+      - name: Post update to LinkedIn
+        env:
+          LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
+          LINKEDIN_PERSON_URN: ${{ secrets.LINKEDIN_PERSON_URN }}
+          PORTFOLIO_URL: ${{ vars.PORTFOLIO_URL }}
+          GITHUB_EVENT_BEFORE: ${{ github.event.before }}
+        run: python scripts/post_linkedin.py
