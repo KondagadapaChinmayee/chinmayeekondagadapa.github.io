@@ -6,25 +6,29 @@
 <title>Chinmayee Kondagadapa | Senior BI Analyst & Analytics Engineer</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>  :root {
-  /* FORCE: ensure white background and brown text despite prefers-color-scheme */
-  html, body { background: #ffffff !important; color: var(--text) !important; }
-    --bg: #ffffff; /* solid white background */
-    --bg2: #fffaf6;
+    --bg: #ffffff; /* white */
+    --bg2: #fffbf7; /* subtle cream */
     --surface: #fffdfb;
     --border: rgba(92,51,23,0.06);
-    --accent: #6b3e26; /* deep warm brown */
-    --accent2: #b88a6d; /* soft brown */
+    --accent: #6b3e26; /* brown */
+    --accent2: #b88a6d; /* light brown */
+    --accent-teal: #0b7880;
+    --accent-amber: #c58f2e;
+    --accent-indigo: #4b6cb7;
+    --chart-1: #6aa3a0; /* for sparklines */
+    --chart-2: #b88a6d;
+    --chart-3: #4b6cb7;
     --text: #6b3e26; /* main text brown */
     --muted: #8b5e3c; /* muted brown */
+    --muted-2: #a1876a;
     --white: #ffffff;
 
-    /* Brown palette (heading shades) */
-    --brown-900:#35261d; /* darkest */
+    --brown-900:#35261d;
     --brown-800:#4a3628;
     --brown-700:#6b4a38;
-    --brown-600:#8b5e3c; /* accent */
+    --brown-600:#8b5e3c;
     --brown-500:#a57757;
-    --brown-400:#cfae92; /* accent2 */
+    --brown-400:#cfae92;
     --brown-200:#fff6f1;
 
     --brown-h1:var(--brown-900);
@@ -564,6 +568,15 @@
   /* Ensure body background uses white */
   body { background: var(--bg) !important; color: var(--text) !important; }
 
+
+  /* Minimal data UI: sparkline + card micro-interactions */
+  .sparkline { width: 100%; height: 38px; display:block; }
+  .project-card { transition: transform 220ms ease, box-shadow 220ms ease; }
+  .project-card:hover { transform: translateY(-6px); box-shadow: 0 10px 30px rgba(50,40,30,0.08); }
+  .spark-meta { font-size: 0.78rem; color: var(--muted); margin-top:6px; }
+  .filter-chip { cursor:pointer; background:transparent; border:1px solid rgba(107,62,38,0.08); padding:6px 10px; border-radius:999px; color:var(--accent); }
+  .filter-chip.active { background: linear-gradient(90deg, rgba(107,62,38,0.06), rgba(184,138,109,0.04)); box-shadow: inset 0 -2px 0 rgba(107,62,38,0.04); }
+
 </style>
 </head>
 <body>
@@ -963,6 +976,31 @@
   document.addEventListener('click', (ev) => {
     if (!ev.target.classList.contains('tech-tag')) clearProjectFilter();
   });
+</script>
+
+
+<script>
+// Simple sparkline renderer for elements with data-sparkline="v1,v2,.."
+function renderSparkline(el, values, color){
+  const w=el.clientWidth; const h=38; const canvas=document.createElement('canvas');
+  canvas.width=w; canvas.height=h; canvas.style.width='100%'; canvas.style.height=h+'px';
+  el.innerHTML=''; el.appendChild(canvas);
+  const ctx=canvas.getContext('2d');
+  const vals=values.map(Number); const max=Math.max(...vals); const min=Math.min(...vals);
+  const range=max-min||1; const pad=4;
+  ctx.strokeStyle=color||getComputedStyle(document.documentElement).getPropertyValue('--chart-1').trim();
+  ctx.lineWidth=2; ctx.beginPath();
+  vals.forEach((v,i)=>{ const x=pad + (i/(vals.length-1||1))*(w-pad*2); const y=h - pad - ((v-min)/range)*(h-pad*2); if(i===0) ctx.moveTo(x,y); else ctx.lineTo(x,y); });
+  ctx.stroke();
+  // fill gradient
+  const grad=ctx.createLinearGradient(0,0,0,h); grad.addColorStop(0, color+'22'); grad.addColorStop(1,'rgba(255,255,255,0)');
+  ctx.lineTo(w-pad,h-pad); ctx.lineTo(pad,h-pad); ctx.closePath(); ctx.fillStyle=grad; ctx.fill();
+}
+function initSparklines(){ document.querySelectorAll('[data-sparkline]').forEach(el=>{ try{ const vals=el.getAttribute('data-sparkline').split(','); const color=el.getAttribute('data-sparkline-color') || getComputedStyle(document.documentElement).getPropertyValue('--chart-1').trim(); renderSparkline(el, vals, color); }catch(e){console.warn(e)} }); }
+window.addEventListener('resize', ()=>{ document.querySelectorAll('[data-sparkline]').forEach(el=> initSparklines()); });
+window.addEventListener('load', initSparklines);
+// simple interactive filter chips example
+window.addEventListener('load', ()=>{ document.querySelectorAll('.filter-chip').forEach(chip=> chip.addEventListener('click', ()=>{ chip.classList.toggle('active'); const tag=chip.textContent.trim().toLowerCase(); document.querySelectorAll('.project-card').forEach(card=>{ if(!chip.classList.contains('active')){ card.style.display='block'; } else { const tags=card.getAttribute('data-tags')||''; card.style.display = tags.toLowerCase().includes(tag) ? 'block' : 'none'; } }); })); });
 </script>
 
 </body>
