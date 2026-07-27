@@ -9,5 +9,19 @@
       "A specific outcome or responsibility.",
       "Another concrete highlight."
     ]
+  },
+  {
+    "id": "k2-integrity-data-analyst",
+    "role": "Data Analyst",
+    "company": "K2 Integrity",
+    "period": "June 6, 2026 — Present",
+    "location": "Remote / New York, NY",
+    "description": "Performed end-to-end data analysis and reporting to support compliance and operational teams. Built ETL pipelines, dashboards, and ad-hoc analyses to surface risk signals and operational trends.",
+    "highlights": [
+      "Designed and maintained Power BI dashboards used by stakeholders to monitor transaction integrity and compliance metrics.",
+      "Implemented SQL-based ETL workflows to standardize and enrich incoming datasets, reducing data prep time by ~40%.",
+      "Delivered actionable insights that informed process changes to reduce false positives and improve investigation efficiency.",
+      "Collaborated with engineering and operations to productionize key reporting and automate weekly stakeholder reports."
+    ]
   }
 ]

@@ -1,21 +1,59 @@
 :root{
-  --bg:#ffffff; --text:#2b1f18; --muted:#6b4f3b; --accent:#8b5e3c; --accent-2:#d8b4a6; --card:#fffaf6; --border:rgba(139,94,60,0.08);
+  --bg:#ffffff;
+  --brown-900:#2b1f18; /* primary text */
+  --brown-800:#3a2a20;
+  --brown-700:#5b3e2d;
+  --brown-600:#8b5e3c; /* accent */
+  --brown-500:#a57757;
+  --brown-400:#d8b4a6; /* accent-2 */
+  --brown-200:#fffaf6; /* light surface */
+  --card:var(--brown-200);
+  --border:rgba(139,94,60,0.08);
+  --accent:var(--brown-600);
+  --accent-2:var(--brown-400);
+  --text:var(--brown-900);
+  --muted:var(--brown-700);
+  --white:#ffffff;
+  --brown-h1:var(--brown-900);
+  --brown-h2:var(--brown-700);
+  --brown-h3:var(--brown-600);
 }
 :root[data-theme="dark"]{
-  --bg:#0f0b07; --text:#f5efe9; --muted:#cbb6a1; --accent:#d6b89a; --accent-2:#8b5e3c; --card:#1a130f; --border:rgba(255,255,255,0.04);
+  --bg:#0f0b07;
+  --brown-900:#f5efe9;
+  --brown-800:#e8dccb;
+  --brown-700:#cbb6a1;
+  --brown-600:#d6b89a;
+  --brown-500:#b2936f;
+  --brown-400:#8b5e3c;
+  --card:#1a130f;
+  --border:rgba(255,255,255,0.04);
+  --accent:var(--brown-600);
+  --accent-2:var(--brown-400);
+  --text:var(--brown-900);
+  --muted:var(--brown-700);
+  --brown-h1:var(--brown-900);
+  --brown-h2:var(--brown-700);
+  --brown-h3:var(--brown-600);
 }
 
-/* Enforce no-bold typography and consistent typeface */
+/* Heading color assignments */
+h1 { color: var(--brown-h1); }
+h2 { color: var(--brown-h2); }
+h3 { color: var(--brown-h3); }
+
+/* Enforce no-bold typography, cursive/italic presentation, and consistent typeface */
 html, body, *, *::before, *::after {
   font-weight: 300 !important;
+  font-style: italic !important;
   font-family: 'DM Sans', Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial !important;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   font-synthesis: none !important;
 }
 
-/* Make sure headings also use light weight and the same font */
-h1,h2,h3,h4,h5,h6 { font-family: 'DM Sans', Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial !important; font-weight:300 !important }
+/* Make sure headings also use light weight, italic, and the same font */
+h1,h2,h3,h4,h5,h6 { font-family: 'DM Sans', Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial !important; font-weight:300 !important; font-style: italic !important }
 
 *{box-sizing:border-box}
 * { transition: color .18s ease, background-color .18s ease, box-shadow .18s ease, transform .12s ease; }
@@ -52,3 +90,19 @@ strong,b{font-weight:300;color:var(--text)}
 .theme-toggle .slider{width:44px;height:26px;background:var(--card);display:inline-block;border-radius:999px;border:1px solid var(--border)}
 .site-footer{border-top:1px solid var(--border);padding:18px 0;margin-top:20px;color:var(--muted)}
 @media (max-width:640px){.nav-row{gap:6px}.search{width:100%;margin-top:8px}}
+
+/* Tech cloud (animated background tags) */
+.tech-cloud{position:absolute;inset:0;z-index:2;pointer-events:none;overflow:visible}
+.tech-cloud .tech-tag{position:absolute;display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(139,94,60,0.10);color:var(--brown-900);font-size:0.82rem;backdrop-filter:blur(2px);border:1px solid rgba(139,94,60,0.06);cursor:pointer;pointer-events:auto;transition:transform .28s cubic-bezier(.2,.9,.3,1),box-shadow .2s,opacity .2s;white-space:nowrap}
+.tech-cloud .tech-tag:hover{transform:translateY(-6px) scale(1.06);box-shadow:0 10px 24px rgba(11,7,5,0.06);opacity:1}
+@keyframes floaty{0%{transform:translateY(0) translateX(0)}50%{transform:translateY(-8px) translateX(4px)}100%{transform:translateY(0) translateX(0)}}
+.tech-cloud .tech-tag{animation:floaty 6s ease-in-out infinite;opacity:.92}
+
+/* Active tech filter style */
+.tech-tag.active{background:var(--brown-600);color:var(--white);border-color:rgba(0,0,0,0.06);box-shadow:0 12px 30px rgba(139,94,60,0.12);}
+
+/* Ensure hero-content stays above cloud */
+.hero-content{position:relative;z-index:3}
+
+/* Responsive tweaks: fewer tags on small screens */
+@media (max-width:640px){.tech-cloud .tech-tag{display:none}}

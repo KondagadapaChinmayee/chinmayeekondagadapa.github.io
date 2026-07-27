@@ -16,6 +16,28 @@
     --text: #2b1f18;
     --muted: #6b4f3b;
     --white: #ffffff;
+
+    /* Brown palette (heading shades) */
+    --brown-900:#2b1f18; /* primary */
+    --brown-800:#3a2a20;
+    --brown-700:#5b3e2d;
+    --brown-600:#8b5e3c; /* accent */
+    --brown-500:#a57757;
+    --brown-400:#d8b4a6; /* accent2 */
+    --brown-200:#fffaf6;
+
+    --brown-h1:var(--brown-900);
+    --brown-h2:var(--brown-700);
+    --brown-h3:var(--brown-600);
+  }
+
+  /* Enforce no-bold typography globally */
+  html, body, *, *::before, *::after {
+    font-weight: 300 !important;
+    font-family: 'DM Sans', Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial !important;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    font-synthesis: none !important;
   }
 
   /* Enforce no-bold typography globally */
@@ -545,13 +567,14 @@
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-grid"></div>
+  <div class="tech-cloud" id="techCloud" aria-hidden="false"></div>
   <div class="hero-content">
-    <span class="hero-tag">Data Analyst · Analytics Engineer</span>
+    <span class="hero-tag">Featured work · case studies · interactive demos</span>
     <h1>Chinmayee<br><em>Kondagadapa</em></h1>
-    <p class="hero-sub">Senior BI Analyst & Analytics Engineer with 8+ years turning complex data into decisions — from pipeline to dashboard.</p>
+    <p class="hero-sub">Analytics products, dashboards, and pipelines that changed outcomes. Browse curated case studies, interactive demos, and production dashboards — this site is a showcase, not a job listing.</p>
     <div class="hero-ctas">
-      <a href="mailto:chinmayeekondagadapa@gmail.com" class="btn-primary">Get in Touch</a>
-      <a href="https://www.linkedin.com/in/chinmayeekondagadapa-bianalyst/" target="_blank" class="btn-ghost">LinkedIn Profile</a>
+      <a href="#projects" class="btn-primary">Explore work</a>
+      <a href="#projects" class="btn-ghost">View demos</a>
     </div>
     <div class="hero-stats">
       <div>
@@ -659,8 +682,23 @@
   <div class="exp-list">
     <div class="exp-item reveal">
       <div class="exp-meta">
+        <div class="exp-company">K2 Integrity</div>
+        <div class="exp-period">June 6, 2026 — Present</div>
+        <div class="exp-period" style="margin-top:0.3rem">Remote / New York, NY</div>
+      </div>
+      <div>
+        <div class="exp-role">Data Analyst — FRSM-Data tech</div>
+        <div class="exp-desc">Working in FRSM-Data tech on transaction monitoring, risk signal detection, and operational analytics. Built ETL workflows, Power BI dashboards, and automated reports to support compliance and investigation teams.</div>
+        <div class="exp-highlights">
+          <span class="tag">Power BI</span><span class="tag">SQL</span><span class="tag">PySpark</span><span class="tag">Azure</span><span class="tag">Anomaly Detection</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-meta">
         <div class="exp-company">JPMorgan Chase</div>
-        <div class="exp-period">Jun 2024 – Mar 2026</div>
+        <div class="exp-period">Jun 2024 – May 2026</div>
         <div class="exp-period" style="margin-top:0.3rem">Chicago, IL</div>
       </div>
       <div>
@@ -786,7 +824,7 @@
       <h2 class="section-title">Get in touch</h2>
       <div class="divider"></div>
       <p style="color:var(--muted);font-size:0.95rem">
-        Email: <a href="mailto:nkondagadapa@gmail.com">nkondagadapa@gmail.com</a> • Phone: +1 312-451-0658<br>
+        For collaborations, demos, and product inquiries: <a href="mailto:chinmayeekondagadapa@gmail.com">chinmayeekondagadapa@gmail.com</a> • Phone: +1 312-451-0658<br>
         LinkedIn: <a href="https://www.linkedin.com/in/chinmayeekondagadapa-bianalyst/" target="_blank">chinmayeekondagadapa-bianalyst</a> • GitHub: <a href="https://github.com/ChinmayeeKondagadapa" target="_blank">ChinmayeeKondagadapa</a>
       </p>
     </div>
@@ -817,7 +855,7 @@
 
 <footer>
   <span>© 2026 Chinmayee Kondagadapa</span>
-  <span>Chicago, IL · Available Nationwide (Remote)</span>
+<span>Showcase site — not seeking job opportunities</span>
 </footer>
 
 <script>
@@ -831,6 +869,85 @@
     });
   }, { threshold: 0.1 });
   reveals.forEach(el => observer.observe(el));
+
+  // Tech cloud: animated interactive tags that filter projects
+  const techTags = [
+    'Python','SQL','Power BI','DAX','Tableau','dbt','Snowflake','Azure','Azure OpenAI','LangChain',
+    'PySpark','scikit-learn','TensorFlow','PyTorch','Azure ML','MLflow','Streamlit','Flask','Docker','Git',
+    'Airflow','BigQuery','Redshift','Looker','Power Query','Excel','R','ggplot','Spark','Snowpark'
+  ];
+
+  const techCloud = document.getElementById('techCloud');
+  const projectCards = Array.from(document.querySelectorAll('.project-card'));
+  let activeFilter = null;
+
+  function placeTechTags() {
+    if (!techCloud) return;
+    techCloud.innerHTML = '';
+    const rect = techCloud.getBoundingClientRect();
+    const w = rect.width || window.innerWidth;
+    const h = rect.height || window.innerHeight * 0.5;
+    techTags.forEach((t, i) => {
+      const el = document.createElement('span');
+      el.className = 'tech-tag';
+      el.textContent = t;
+      // random position within hero area
+      const left = Math.random() * 80 + 5; // percent
+      const top = Math.random() * 65 + 12; // percent
+      el.style.left = left + '%';
+      el.style.top = top + '%';
+      // slightly stagger animation
+      el.style.animationDelay = (Math.random() * 4).toFixed(2) + 's';
+      el.style.animationDuration = (5 + Math.random() * 6).toFixed(2) + 's';
+      // click to filter projects
+      el.addEventListener('click', (ev) => {
+        ev.stopPropagation();
+        const tag = t.toLowerCase();
+        if (activeFilter === tag) {
+          clearProjectFilter();
+        } else {
+          applyProjectFilter(tag);
+          // update active state
+          document.querySelectorAll('.tech-tag').forEach(x => x.classList.toggle('active', x === el));
+        }
+      });
+      techCloud.appendChild(el);
+    });
+  }
+
+  function applyProjectFilter(tag) {
+    activeFilter = tag;
+    projectCards.forEach(card => {
+      const tagsEl = card.querySelector('.skill-tags');
+      const content = tagsEl ? tagsEl.textContent.toLowerCase() : card.textContent.toLowerCase();
+      if (content.includes(tag)) {
+        card.style.display = '';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+
+  function clearProjectFilter() {
+    activeFilter = null;
+    document.querySelectorAll('.tech-tag').forEach(x => x.classList.remove('active'));
+    projectCards.forEach(card => card.style.display = '');
+  }
+
+  // reposition tags on resize for variety
+  window.addEventListener('resize', () => {
+    // debounce
+    clearTimeout(window._techCloudResize);
+    window._techCloudResize = setTimeout(placeTechTags, 250);
+  });
+
+  // initialize after a short delay to allow layout
+  setTimeout(placeTechTags, 300);
+
+  // click anywhere to clear filter
+  document.addEventListener('click', (ev) => {
+    if (!ev.target.classList.contains('tech-tag')) clearProjectFilter();
+  });
 </script>
 
 </body>
