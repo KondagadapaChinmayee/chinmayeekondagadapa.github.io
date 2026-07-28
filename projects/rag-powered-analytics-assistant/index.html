@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>RAG-Powered Analytics Assistant — Demo</title>
+  <style>
+    body{font-family: 'Times New Roman', Times, serif; padding:2rem; color:#35261d; background:#fffefc}
+    .card{max-width:800px;margin:2rem auto;padding:1.6rem;border:1px solid rgba(53,38,29,0.06);border-radius:12px}
+    h1{color:#6b3e26}
+    .back{display:inline-block;margin-top:1rem;color:#6b3e26;text-decoration:none;border:1px solid rgba(107,62,38,0.08);padding:8px 12px;border-radius:8px}
+    canvas{width:100%;height:140px;border-radius:6px}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>RAG-Powered Analytics Assistant — Demo</h1>
+    <p>This lightweight demo shows a tiny RAG-style query result rendered from static sample documentation. It is a placeholder to demonstrate how a hosted demo could look.</p>
+    <canvas id="demoChart"></canvas>
+    <p style="color:#8b5e3c;font-size:0.95rem">Example: shortest-help answer fetched from docs and summarized.</p>
+    <pre id="answer" style="background:#fffdfb;padding:12px;border:1px solid rgba(139,94,60,0.04);border-radius:8px">Loading...</pre>
+    <a class="back" href="/">← Back to portfolio</a>
+  </div>
+<script>
+  // simple sparkline demo
+  const canvas=document.getElementById('demoChart');
+  const ctx=canvas.getContext('2d');
+  const w=canvas.clientWidth; const h=140; canvas.width=w; canvas.height=h;
+  const vals=[12,18,14,22,28,24,30,26,32,28];
+  const max=Math.max(...vals), min=Math.min(...vals), pad=10; ctx.strokeStyle='#6aa3a0'; ctx.lineWidth=2; ctx.beginPath(); vals.forEach((v,i)=>{ const x=pad + (i/(vals.length-1))*(w-pad*2); const y=h-pad - ((v-min)/(max-min))*(h-pad*2); if(i===0)ctx.moveTo(x,y); else ctx.lineTo(x,y); }); ctx.stroke();
+  // fake RAG answer
+  setTimeout(()=>{ document.getElementById('answer').textContent = 'Q: How to refresh the assistant data?\nA: Run the nightly sync job that writes to table analytics.metadata_docs; the assistant re-indexes every 30 minutes.' }, 700);
+</script>
+</body>
+</html>
